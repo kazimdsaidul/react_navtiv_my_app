@@ -9,7 +9,10 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput,
+  Button
+
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -21,19 +24,67 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+
+  // status
+  state = {
+    placeName: "",
+    placeData: []
+  }
+
+  // on change hander 
+  placeNameChangeHander = value => {
+
+
+    this.setState({
+      placeName: value
+      
+    });
+  };
+
+  // hander on button press 
+  placeButtonPressHander = () => {
+  
+
+    if (this.state.placeName.trim === "") {
+      return;
+    }
+
+    
+    this.setState(preState =>{
+      return{
+        placeData : preState.placeData.concat(preState.placeName)
+      }
+    });
+  };
+
+   
   render() {
+    
+    const placeOutput = this.state.placeData.map((place, i) => (
+      <Text>{place}</Text>
+    ));
+
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native !
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={styles.inputContainer} >
+          <TextInput style = {styles.inputText}
+            value={this.state.placeName}
+            onChangeText={this.placeNameChangeHander}
+          />
+          <Button 
+            style = {styles.button}
+            title="Add"
+            color="#841584"
+            onPress ={this.placeButtonPressHander}
+          />
+        </View>    
+       <View>{placeOutput}</View>
+    
+
       </View>
+
+
     );
   }
 }
@@ -42,18 +93,23 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: 'blue',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     backgroundColor: '#F5FCFF',
+  }, 
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  
+  inputText: {
+    width : "70%"
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
+  button: {
+    width : "30%"
+  }
+
+
 });
