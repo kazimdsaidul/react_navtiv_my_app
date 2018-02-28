@@ -15,6 +15,9 @@ import {
 
 } from 'react-native';
 
+import  ListItem from './src/components/listItem/ListItem';
+
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
     'Cmd+D or shake for dev menu',
@@ -55,13 +58,17 @@ export default class App extends Component<Props> {
         placeData : preState.placeData.concat(preState.placeName)
       }
     });
+    this.setState({
+      placeName: ""
+    });
   };
 
    
   render() {
     
     const placeOutput = this.state.placeData.map((place, i) => (
-      <Text>{place}</Text>
+      <ListItem key = {i} placeName= {place} ></ListItem>  
+    
     ));
 
 
@@ -79,12 +86,8 @@ export default class App extends Component<Props> {
             onPress ={this.placeButtonPressHander}
           />
         </View>    
-       <View>{placeOutput}</View>
-    
-
+       <View style = {styles.listContainer} >{placeOutput}</View>
       </View>
-
-
     );
   }
 }
@@ -99,6 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   }, 
   inputContainer: {
+    marginTop: 20,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
@@ -109,6 +113,9 @@ const styles = StyleSheet.create({
 
   button: {
     width : "30%"
+  },
+  listContainer: {
+    width : "100%"
   }
 
 
