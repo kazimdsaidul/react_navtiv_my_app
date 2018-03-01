@@ -13,7 +13,7 @@ const placeList = props => {
           // passing data using props to ListItem component 
           placeImage = {info.item.image}
           placeName = {info.item.name}
-          onItemPressed={() => props.onItemDeleted(info.item.key)}
+          onItemPressed={() => props.onItemSeleted(info.item.key)}
         />
       )}
     />
