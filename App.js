@@ -12,29 +12,32 @@ export default class App extends Component {
   placeAddedHandler = placeName => {
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(placeName)
+        places: prevState.places.concat({
+          key: Math.random(),
+          value: placeName
+        })
       };
     });
   };
 
-  placeDeletedHander = index =>{
-    this.setState(prevState =>{
+  placeDeletedHandler = key => {
+    this.setState(prevState => {
       return {
-        places : prevState.places.filter( (place , i)=>{
-           return i !== index;
+        places: prevState.places.filter(place => {
+          return place.key !== key;
         })
-      }
+      };
     });
-
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+        <PlaceInput onPlaceAdded = {this.placeAddedHandler} />
         <PlaceList
-         places={this.state.places}  
-         onItemDeleted = {this.placeDeletedHander} />
+          places={this.state.places}
+          onItemDeleted={this.placeDeletedHandler}
+        />
       </View>
     );
   }
