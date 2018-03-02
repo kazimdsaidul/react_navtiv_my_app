@@ -10,10 +10,9 @@ const placeList = props => {
       data={props.places}
       renderItem={(info) => (
         <ListItem
-          // passing data using props to ListItem component 
-          placeImage = {info.item.image}
-          placeName = {info.item.name}
-          onItemPressed={() => props.onItemSeleted(info.item.key)}
+          placeName={info.item.name}
+          placeImage={info.item.image}
+          onItemPressed={() => props.onItemSelected(info.item.key)}
         />
       )}
     />
