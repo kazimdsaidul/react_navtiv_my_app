@@ -1,6 +1,6 @@
 
 import { Navigation } from 'react-native-navigation';
-import  AuthScreen  from './src/screen/Auth';
+import  AuthScreen  from './src/screen/auth/Auth';
 
 
 // register some screen
