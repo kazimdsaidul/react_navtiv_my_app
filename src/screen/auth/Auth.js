@@ -8,7 +8,7 @@ class AuthScreen extends Component {
         console.log('====================================')
         console.log("on click")
         console.log('====================================')
-       startMainTabs();
+      startMainTabs();
 
      }
 

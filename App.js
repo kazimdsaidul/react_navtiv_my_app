@@ -1,17 +1,26 @@
 
 import { Navigation } from 'react-native-navigation';
-import  AuthScreen  from './src/screen/auth/Auth';
+import {Provider} from 'react-redux'
+
+import AuthScreen from './src/screen/auth/Auth';
+import SharePlaces from './/src/screen/sharePlaces/SharePlaces';
+import FindPlaces from './/src/screen/findPlaces/FindPlaces';
 
 
-// register some screen
+//create store and 
+import configureStore from './src/store/configureStore';
+const store = configureStore();
+
+// register some screen and pass store and provider to connect redux in app
 Navigation.registerComponent("myApp.AuthScreen", () => AuthScreen);
+Navigation.registerComponent("myApp.SharePlaces", () => SharePlaces, store, Provider);
+Navigation.registerComponent("myApp.FindPlaces", () => FindPlaces, store, Provider);
 
 
 // start app
 Navigation.startSingleScreenApp({
-   screen: {
-     screen: "myApp.AuthScreen",
-     title : "Login"
-   }
-   
+  screen: {
+    screen: "myApp.AuthScreen",
+    title: "Login"
+  }
 });

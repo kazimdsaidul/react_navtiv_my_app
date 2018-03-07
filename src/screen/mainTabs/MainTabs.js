@@ -1,33 +1,31 @@
-import React, { Component } from 'react';
-import { Navigation } from 'react-native-navigation';
-import SharePlaces from '..//sharePlaces/SharePlaces';
-import FindPlaces from '..//findPlaces/FindPlaces';
+import React, { Component } from "react";
+import { Navigation } from "react-native-navigation";
 
+import Icon from "react-native-vector-icons/Ionicons";
 
-
-// register some screen
-Navigation.registerComponent("myApp.SharePlaces", () => SharePlaces);
-Navigation.registerComponent("myApp.FindPlaces", () => FindPlaces);
-
-
-// start tab base app 
+// start tab base app
 const startTabs = () => {
+  Promise.all([
+    Icon.getImageSource("md-map", 30),
+    Icon.getImageSource("ios-share-outline", 30)
+  ]).then(sources => {
     Navigation.startTabBasedApp({
-        tabs: [
-            {
-                label: 'SharePlaces',
-                screen: 'myApp.SharePlaces',
-            },
-            {
-                label: 'FindPlaces',
-                screen: 'myApp.FindPlaces',
-            }
-        ]
+      tabs: [
+        {
+          title: "Find Places",
+          label: "Find Places",
+          screen: "myApp.FindPlaces",
+          icon: sources[1]
+        },
+        {
+          title: "Share Places",
+          label: "Share Places",
+          screen: "myApp.SharePlaces",
+          icon: sources[0]
+        }
+      ]
     });
-
-
+  });
 };
-
-
 
 export default startTabs;
