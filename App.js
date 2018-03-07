@@ -5,6 +5,7 @@ import {Provider} from 'react-redux'
 import AuthScreen from './src/screen/auth/Auth';
 import SharePlaces from './/src/screen/sharePlaces/SharePlaces';
 import FindPlaces from './/src/screen/findPlaces/FindPlaces';
+import PlaceDetail from './/src/screen/PlaceDetail/PlaceDetail';
 
 
 //create store and 
@@ -15,6 +16,7 @@ const store = configureStore();
 Navigation.registerComponent("myApp.AuthScreen", () => AuthScreen);
 Navigation.registerComponent("myApp.SharePlaces", () => SharePlaces, store, Provider);
 Navigation.registerComponent("myApp.FindPlaces", () => FindPlaces, store, Provider);
+Navigation.registerComponent("myApp.PlaceDetail", () =>PlaceDetail);
 
 
 // start app
