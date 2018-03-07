@@ -29,20 +29,9 @@ const reducer = (state = initialState, action) => {
           return place.key !== state.selectedPlace.key;
         })
       };
-
-      default: // need this for default case
-      
-      return {
-        ...state,
-        places: state.places.concat({
-          key: Math.random(),
-          name: "hello",
-          image: {
-            uri:
-              "https://c1.staticflickr.com/5/4096/4744241983_34023bf303_b.jpg"
-          }
-        })
-      }
+       default: 
+       return state;
+     
   }
 };
 
