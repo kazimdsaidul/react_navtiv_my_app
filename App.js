@@ -16,7 +16,7 @@ const store = configureStore();
 Navigation.registerComponent("myApp.AuthScreen", () => AuthScreen);
 Navigation.registerComponent("myApp.SharePlaces", () => SharePlaces, store, Provider);
 Navigation.registerComponent("myApp.FindPlaces", () => FindPlaces, store, Provider);
-Navigation.registerComponent("myApp.PlaceDetail", () =>PlaceDetail);
+Navigation.registerComponent("myApp.PlaceDetail", () =>PlaceDetail, store, Provider);
 
 
 // start app

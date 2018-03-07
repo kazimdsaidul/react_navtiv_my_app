@@ -3,6 +3,9 @@ import {
   DELETE_PLACE
 } from "../actions/actionTypes";
 
+
+import {deletePlace} from '..//..//store/actions/index'
+
 const initialState = {
   places: []
 
@@ -26,9 +29,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         places: state.places.filter(place => {
-          return place.key !== state.selectedPlace.key;
+          return place.key !== action.placeKey;
         })
       };
+
        default: 
        return state;
      
