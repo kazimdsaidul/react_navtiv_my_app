@@ -6,7 +6,7 @@ import AuthScreen from './src/screen/auth/Auth';
 import SharePlaces from './/src/screen/sharePlaces/SharePlaces';
 import FindPlaces from './/src/screen/findPlaces/FindPlaces';
 import PlaceDetail from './/src/screen/PlaceDetail/PlaceDetail';
-
+import SideDrawer from './/src/screen/SildMenu/SideDrawer';
 
 //create store and 
 import configureStore from './src/store/configureStore';
@@ -17,6 +17,9 @@ Navigation.registerComponent("myApp.AuthScreen", () => AuthScreen);
 Navigation.registerComponent("myApp.SharePlaces", () => SharePlaces, store, Provider);
 Navigation.registerComponent("myApp.FindPlaces", () => FindPlaces, store, Provider);
 Navigation.registerComponent("myApp.PlaceDetail", () =>PlaceDetail, store, Provider);
+
+// SideDrawer
+Navigation.registerComponent("myApp.SideDrawer", () => SideDrawer);
 
 
 // start app
