@@ -45,15 +45,15 @@ class SharePlaces extends Component {
   };
 
   onPlaceAddedHander = placeName => {
-    if(this.state.placeName.trim() !== ""){
-      this.props.onAddPlace(this.state.placeName);
+    if(this.state.placeName.trim() !==""){
+      this.props.onAddPlace(thplaceName);
     }
 
   };
 
   render() {
     return (
-      <ScrollView keyboardShouldPersistTaps="always">
+      <ScrollView>
         <View style={styles.container}>
           <Text>Share a place with us!</Text>
           <PickImage/>

@@ -7,7 +7,7 @@ PlaceInput = props => (
   <DefaultInput
     placeholder="Place Name"
     value={props.placeName}
-    onChangeText={props.placeNameChangedHandler}
+    onChangeText={this.props.placeNameChangedHandler}
   />
 );
 

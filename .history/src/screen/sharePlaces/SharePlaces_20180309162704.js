@@ -18,16 +18,8 @@ import PickLocation from ".//..//.//..//components/PickLocation/PickLocation"
 
 class SharePlaces extends Component {
 
-  state = {
-    placeName: ""
-  };
 
-  placeNameChangedHandler = val => {
-    this.setState({
-      placeName: val
-    });
-  };
-
+  
   // setup for onNavigatorEvent
   constructor(props) {
     super(props);
@@ -45,24 +37,21 @@ class SharePlaces extends Component {
   };
 
   onPlaceAddedHander = placeName => {
-    if(this.state.placeName.trim() !== ""){
-      this.props.onAddPlace(this.state.placeName);
-    }
-
+    this.props.onAddPlace(placeName);
   };
 
   render() {
     return (
-      <ScrollView keyboardShouldPersistTaps="always">
+      <ScrollView>
         <View style={styles.container}>
           <Text>Share a place with us!</Text>
           <PickImage/>
           <PickLocation/>
           <View style={styles.input}>
-           <PlaceInput placeName={this.state.placeName}  placeNameChangedHandler ={this.placeNameChangedHandler}></PlaceInput>
+           <PlaceInput placeName={this.state.placeName}></PlaceInput>
           </View>
-          <Button title="Share the Place!" onPress = {this.onPlaceAddedHander}/>
-  
+          <Button title="Share the Place!" />
+          <PlaceInput onPlaceAdded={this.onPlaceAddedHander} />
         </View>
       </ScrollView>
     );

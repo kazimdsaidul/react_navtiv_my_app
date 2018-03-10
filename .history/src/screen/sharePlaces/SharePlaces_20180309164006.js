@@ -53,7 +53,7 @@ class SharePlaces extends Component {
 
   render() {
     return (
-      <ScrollView keyboardShouldPersistTaps="always">
+      <ScrollView>
         <View style={styles.container}>
           <Text>Share a place with us!</Text>
           <PickImage/>

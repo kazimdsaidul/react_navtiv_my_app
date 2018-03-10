@@ -22,6 +22,10 @@ class SharePlaces extends Component {
     placeName: ""
   };
 
+  componentDidMount() {
+    
+  }
+
   placeNameChangedHandler = val => {
     this.setState({
       placeName: val
@@ -45,23 +49,20 @@ class SharePlaces extends Component {
   };
 
   onPlaceAddedHander = placeName => {
-    if(this.state.placeName.trim() !== ""){
-      this.props.onAddPlace(this.state.placeName);
-    }
-
+    this.props.onAddPlace(placeName);
   };
 
   render() {
     return (
-      <ScrollView keyboardShouldPersistTaps="always">
+      <ScrollView>
         <View style={styles.container}>
           <Text>Share a place with us!</Text>
           <PickImage/>
           <PickLocation/>
           <View style={styles.input}>
-           <PlaceInput placeName={this.state.placeName}  placeNameChangedHandler ={this.placeNameChangedHandler}></PlaceInput>
+           <PlaceInput placeName={this.state.placeName}></PlaceInput>
           </View>
-          <Button title="Share the Place!" onPress = {this.onPlaceAddedHander}/>
+          <Button title="Share the Place!" />
   
         </View>
       </ScrollView>
